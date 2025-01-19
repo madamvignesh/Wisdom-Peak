@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Context from '../../context/context'
-import { withRouter } from 'react-router-dom';
+import withRouter from '../../utils/withRouter';
 import {
   UserDetailContainer,
   DetailItem,
@@ -123,7 +123,7 @@ class User extends Component {
                   </div>
                 </DetailItem>
               </UserDetailContainer>
-              <StyledLink onClick={this.handleBack}>
+              <StyledLink to='/' >
                 <Button>Back</Button>
               </StyledLink>
             </>
@@ -156,4 +156,4 @@ class User extends Component {
   }
 }
 
-export default withRouter(User);
+export default User;

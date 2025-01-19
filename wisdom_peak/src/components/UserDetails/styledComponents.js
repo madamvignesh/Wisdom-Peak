@@ -22,10 +22,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 8px;
 `;
 
-// Heading style for user name
 export const Heading = styled.h4`
   font-size: 20px;
   font-weight: bold;
@@ -33,13 +33,11 @@ export const Heading = styled.h4`
   color: ${(props) => (props.isDarkTheme ? "#fff" : "#000")};
 `;
 
-// Mail style for email
 export const Mail = styled.p`
   font-size: 16px;
   color: ${(props) => (props.isDarkTheme ? "#E2BFBF" : "#555")};
 `;
 
-// City heading style for city name
 export const CityHeading = styled.h4`
   font-size: 18px;
   color: ${(props) => (props.isDarkTheme ? "#aaa" : "#333")};
