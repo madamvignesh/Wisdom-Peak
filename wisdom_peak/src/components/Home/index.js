@@ -3,6 +3,10 @@ import Userdetails from "../UserDetails"
 
 import {
     MainContainer,
+    UesrContainer,
+    Container,
+    Input,
+    Select,
 } from './styledComponents'
 
 const apiCallLists = {
@@ -16,6 +20,8 @@ class Home extends Component{
     state = {
         apiStatus: apiCallLists.initially,
         data:[],
+        search: "",
+        sort: 'A-Z',
     }
 
     getdata = async () =>{
@@ -67,11 +73,42 @@ class Home extends Component{
         </div>
     )
 
+    onChangesearch = event =>{
+        this.setState({search: event.target.value})
+    }
+
+    onChangeSort = event =>{
+        this.setState({sort: event.target.value})
+    }
+
     getDisplay = () =>{
-        const {data} =this.state
-        console.log(data[0])
+        const { data, search, sort } = this.state;
+        let filteredData = data.filter(user =>
+        user.name.toLowerCase().includes(search.toLowerCase())
+        );
+        if (sort === "A-Z") {
+        filteredData = filteredData.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (sort === "Z-A") {
+        filteredData = filteredData.sort((a, b) => b.name.localeCompare(a.name));
+        }
         return (
-            <Userdetails data={data} />
+            <MainContainer>
+                <Container>
+                    <h1>User Details</h1>
+                    <Container>
+                        <Input type="text" onChange={this.onChangesearch} value={search} />
+                        <Select value={sort} onChange={this.onChangeSort}>
+                            <option value="A-Z">A-Z</option>
+                            <option Value="Z-A">Z-A</option>
+                        </Select>
+                    </Container>
+                </Container>
+                <UesrContainer>
+                    {filteredData.map(user=>(
+                        <Userdetails key={user.id} user={user} />
+                    ))}
+                </UesrContainer>
+            </MainContainer>
         )
     }
  
