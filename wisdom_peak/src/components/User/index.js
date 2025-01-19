@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Context from '../../context/context'
 import withRouter from '../../utils/withRouter';
 import {
+  MainContainer,
   UserDetailContainer,
   DetailItem,
   Heading,
@@ -85,7 +86,7 @@ class User extends Component {
         {(value) => {
           const { isDarkTheme } = value;
           return (
-            <>
+            <MainContainer isDarkTheme={isDarkTheme}>
               <UserDetailContainer isDarkTheme={isDarkTheme}>
                 <Heading isDarkTheme={isDarkTheme}>User Details</Heading>
                 <DetailItem>
@@ -126,7 +127,7 @@ class User extends Component {
               <StyledLink to='/' >
                 <Button>Back</Button>
               </StyledLink>
-            </>
+            </MainContainer>
           );
         }}
       </Context.Consumer>

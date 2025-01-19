@@ -1,13 +1,18 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const MainContainer = styled.div`
+  background-color: ${props=>props.isDarkTheme ? "#474545" : "#ffffff"};
+  padding: 20px;
+`
+
 export const UserDetailContainer = styled.div`
   background-color: ${(props) => (props.isDarkTheme ? "#333" : "#D9D9D9")};
   color: ${(props) => (props.isDarkTheme ? "#fff" : "#000")};
-  padding: 20px;
+  padding: 10px;
   border-radius: 8px;
   max-width: 600px;
-  margin: 20px auto;
+  margin: 0px auto;
 `;
 
 export const Heading = styled.h2`
