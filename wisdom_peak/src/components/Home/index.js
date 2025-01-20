@@ -30,7 +30,7 @@ const apiCallLists = {
   success: "SUCCESS",
   failure: "FAILURE",
   isProgress: "ISPROGRESS",
-};
+}
 
 class Home extends Component {
   state = {
@@ -42,10 +42,10 @@ class Home extends Component {
 
   getdata = async () => {
     this.setState({ apiStatus: apiCallLists.isProgress });
-    const url = "https://jsonplaceholder.typicode.com/users";
-    const response = await fetch(url);
+    const url = "https://jsonplaceholder.typicode.com/users"
+    const response = await fetch(url)
     if (response.ok) {
-      const data = await response.json();
+      const data = await response.json()
       const updatedData = data.map((each) => ({
         id: each.id,
         email: each.email,
@@ -67,11 +67,11 @@ class Home extends Component {
         },
         profile_url: profilePicturesList[Math.floor(Math.random() * 6)],
       }));
-      this.setState({ apiStatus: apiCallLists.success, data: updatedData });
+      this.setState({ apiStatus: apiCallLists.success, data: updatedData })
     } else {
-      this.setState({ apiStatus: apiCallLists.failure });
+      this.setState({ apiStatus: apiCallLists.failure })
     }
-  };
+  }
 
   componentDidMount() {
     this.getdata();
@@ -81,24 +81,24 @@ class Home extends Component {
     <LoaderContainer>
       <h1>Loading...</h1>
     </LoaderContainer>
-  );
+  )
 
   failureView = () => (
     <ErrorContainer>
       <h1>Something went wrong. Please try again later.</h1>
     </ErrorContainer>
-  );
+  )
 
   onChangesearch = (event) => {
-    this.setState({ search: event.target.value });
-  };
+    this.setState({ search: event.target.value })
+  }
 
   onChangeSort = (event) => {
-    this.setState({ sort: event.target.value });
+    this.setState({ sort: event.target.value })
   };
 
   getDisplay = () => {
-    const { data, search, sort } = this.state;
+    const { data, search, sort } = this.state
     let filteredData = data.filter((user) =>
       user.name.toLowerCase().includes(search.toLowerCase())
     );
@@ -110,7 +110,7 @@ class Home extends Component {
     return (
       <Context.Consumer>
         {(value) => {
-          const { isDarkTheme } = value;
+          const { isDarkTheme } = value
           return (
             <MainContainer isDarkTheme={isDarkTheme}>
               <Container>
