@@ -2,6 +2,7 @@ import React, { Component, use } from 'react'
 import Context from '../../context/context'
 import { FaMapLocationDot } from 'react-icons/fa6'; 
 import { FaMapMarkerAlt, FaBuilding } from "react-icons/fa"
+import { GoGlobe } from "react-icons/go"
 import {
   MainContainer,
   UserDetailContainer,
@@ -115,6 +116,7 @@ class User extends Component {
                   </HeadingDetails>
                 </DetailItem>
                 <Container>
+                <DescHead> <GoGlobe size={20} /> Website: <spam>{user.website}</spam> </DescHead>
                   <DescHead> <FaMapMarkerAlt size={20} /> Location <spam>{user.address.geo.lat}, {user.address.geo.lng}</spam> </DescHead>
                   <DescHead>
                     <FaMapLocationDot size={20}/> {"    "}
