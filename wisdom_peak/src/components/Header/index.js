@@ -15,14 +15,17 @@ const Header = () => {
             <Heading color={color}>Wisdom Peak Analysis</Heading>
             <div>
               <ThemeButton onClick={onChangeTheme}>
-                {isDarkTheme ? <MdOutlineDarkMode color="ffffff" size={30}/> : <MdDarkMode size={30}/>}
+                {isDarkTheme 
+                  ? <MdOutlineDarkMode color="ffffff" size={30}/> 
+                  : <MdDarkMode size={30}/>
+                }
               </ThemeButton>
             </div>
           </HeaderContainer>
         );
       }}
     </Context.Consumer>
-  );
-};
+  )
+}
 
 export default Header;

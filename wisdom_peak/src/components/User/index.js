@@ -1,15 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component, use } from 'react'
 import Context from '../../context/context'
 import withRouter from '../../utils/withRouter';
 import {
   MainContainer,
   UserDetailContainer,
+  Container,
   DetailItem,
+  HeadingDetails,
   Heading,
   StyledLink,
+  Head,
+  SubHead,
+  DescHead,
+  Desc,
   Button,
+  ProfileImage,
 } from './styledComponents';
 
+const profilePicturesList = [
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349047/profile_picture3_nyx0uq.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349047/profile_picture1_djdd4w.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349047/profile_picture4_ywqqvy.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349048/profile_picture2_flpsai.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349048/profile_picture5_akl8wc.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349048/profile_picture6_yythda.jpg",
+]
 
 const apiCallLists = {
   initially: 'INITIALLY',
@@ -54,6 +69,7 @@ class User extends Component {
           catch_phrase: data.company.catchPhrase,
           bs: data.company.bs,
         },
+        profile_url: profilePicturesList[Math.floor(Math.random() * 6)],
       }
       console.log(updatedData)
       this.setState({ apiStatus: apiCallLists.success, user: updatedData });
@@ -88,41 +104,31 @@ class User extends Component {
           return (
             <MainContainer isDarkTheme={isDarkTheme}>
               <UserDetailContainer isDarkTheme={isDarkTheme}>
-                <Heading isDarkTheme={isDarkTheme}>User Details</Heading>
+                <Heading isDarkTheme={isDarkTheme}>{user.username}</Heading>
                 <DetailItem>
-                  <strong>Name:</strong> {user.name}
+                  <ProfileImage src={user.profile_url} alt="image"/>
+                  <HeadingDetails>
+                    <Head>{user.name}</Head>
+                    <SubHead>{user.email}</SubHead>
+                    <SubHead>{user.phone}</SubHead>
+                  </HeadingDetails>
                 </DetailItem>
-                <DetailItem>
-                  <strong>Email:</strong> {user.email}
-                </DetailItem>
-                <DetailItem>
-                  <strong>Phone:</strong> {user.phone}
-                </DetailItem>
-                <DetailItem>
-                  <strong>Username:</strong> {user.username}
-                </DetailItem>
-                <DetailItem>
-                  <strong>Website:</strong> {user.website}
-                </DetailItem>
-                <DetailItem>
-                  <strong>Address:</strong>
-                  <div>
-                    <p>
-                      {user.address.street}, {user.address.suite}
-                    </p>
-                    <p>
-                      {user.address.city} - {user.address.zipcode}
-                    </p>
-                  </div>
-                </DetailItem>
-                <DetailItem>
-                  <strong>Company:</strong>
-                  <div>
-                    <p>Name: {user.company.name}</p>
-                    <p>Catchphrase: {user.company.catch_phrase}</p>
-                    <p>BS: {user.company.bs}</p>
-                  </div>
-                </DetailItem>
+                <Container>
+                  <DescHead>Address</DescHead>
+                  <Desc>
+                    {user.address.street}, {user.address.suite}, {user.address.city} - {user.address.zipcode}
+                  </Desc>
+                </Container>
+                <Container>
+                  <DescHead>Company</DescHead>
+                  <Desc>
+                    Name: <spam>{user.company.name}</spam> 
+                    <br />
+                    Catch Phrase: <spam>{user.company.catch_phrase}</spam>
+                    <br />
+                    BS: <spam>{user.company.bs}</spam>
+                  </Desc>
+                </Container>
               </UserDetailContainer>
               <StyledLink to='/' >
                 <Button>Back</Button>
