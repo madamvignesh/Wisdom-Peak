@@ -1,6 +1,7 @@
 import React, { Component, use } from 'react'
 import Context from '../../context/context'
-import withRouter from '../../utils/withRouter';
+import { FaMapLocationDot } from 'react-icons/fa6'; 
+import { FaMapMarkerAlt, FaBuilding } from "react-icons/fa"
 import {
   MainContainer,
   UserDetailContainer,
@@ -114,13 +115,19 @@ class User extends Component {
                   </HeadingDetails>
                 </DetailItem>
                 <Container>
-                  <DescHead>Address</DescHead>
+                  <DescHead> <FaMapMarkerAlt size={20} /> Location <spam>{user.address.geo.lat}, {user.address.geo.lng}</spam> </DescHead>
+                  <DescHead>
+                    <FaMapLocationDot size={20}/> {"    "}
+                    Address</DescHead>
                   <Desc>
                     {user.address.street}, {user.address.suite}, {user.address.city} - {user.address.zipcode}
                   </Desc>
                 </Container>
                 <Container>
-                  <DescHead>Company</DescHead>
+                  <DescHead>
+                    <FaBuilding size={20}/> {"    "}
+                    Company
+                  </DescHead>
                   <Desc>
                     Name: <spam>{user.company.name}</spam> 
                     <br />

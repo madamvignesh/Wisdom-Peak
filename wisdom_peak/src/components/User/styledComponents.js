@@ -25,6 +25,10 @@ export const DescHead = styled.h3`
   font-size: 26px;
   margin-bottom: 0px; 
 
+  spam{
+    font-weight: normal;
+    font-size: 20px;
+  }
   @media(max-width: 768px){
     font-size: 20px;
   }
