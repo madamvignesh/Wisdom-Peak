@@ -139,6 +139,6 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 600px;
+  max-width: 600px;
   margin: 0px auto;
 `
