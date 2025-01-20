@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const MainContainer = styled.div`
-  background-color: ${props=>props.isDarkTheme ? "#47454" : "#ffffff"};
+  background-color: ${props=>props.isDarkTheme ? "#474545" : "#ffffff"};
   padding: 20px;
 `
 
