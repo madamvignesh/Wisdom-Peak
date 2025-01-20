@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import UserDetails from ".";
 
 export const Card = styled.li`
   background-color: ${(props) => (props.isDarkTheme ? "#1E1E1E" : "#FFFFFF")};
@@ -9,31 +10,49 @@ export const Card = styled.li`
   list-style-type: none;
   animation-delay: calc(var(--order) * 100ms);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, border-left 0.3s ease;
-  animation: fadeIn 0.5s ease-in-out;
-  animation-delay: calc(var(--order) * 100ms);
-  animation-fill-mode: backwards;
 
   &:hover {
     transform: translateY(-5px);
-    border-left: 4px solid #007bff; 
+    border-left: 4px solid #OFOE47; 
   }
-`;
+`
+
+export const HeadingContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  overflow: hidden;
+  align-items: center;
+  margin-bottom: 12px;
+`
 
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  overflow: hidden;
+  align-items: center;
+`
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
+export const ProfileImage = styled.img`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  @media(max-width: 768px){
+   width: 80px;
+   height: 80px;
   }
-`;
+`
+
+export const UserHeading = styled.div`
+  display: flex;
+  flex-direction: column;
+  justidy-content: center;
+  align-items: flex-start;
+  text-align: start;
+`
 
 export const Heading = styled.h4`
   font-size: 24px;
@@ -49,6 +68,7 @@ export const Heading = styled.h4`
 
   @media (max-width: 768px) {
     text-align: left;
+    font-size: 18px;
   }
 `;
 
@@ -64,23 +84,39 @@ export const Mail = styled.p`
 
   @media (max-width: 768px) {
     text-align: left;
+    font-size: 14px;
   }
 `;
 
 export const CityHeading = styled.h4`
   font-size: 18px;
-  color: ${(props) => (props.isDarkTheme ? "#98FB98" : "#333")};
+  color: ${(props) => (props.isDarkTheme ? "#fffdd0" : "#333")};
   margin-top: 12px;
   transition: color 0.3s;
 
   &:hover {
     color: ${(props) => (props.isDarkTheme ? "#00FA9A" : "#0056b3")};
   }
-`;
+  @media(max-width: 768px){
+    font-size: 16px;
+  }
+`
+
+export const DescContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  @media(max-width: 768px){
+    h3{
+      font-size: 14px;
+    }
+  }
+`
 
 export const StyledLink = styled(Link)`
-  text-decoration: none; /* Removes underline */
-  display: block; /* Ensures full clickable area */
+  text-decoration: none; 
+  display: block; 
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s;
@@ -88,5 +124,6 @@ export const StyledLink = styled(Link)`
   &:hover {
     text-decoration: none;
     transform: scale(1.02);
+    text-decoration: underline; 
   }
 `;

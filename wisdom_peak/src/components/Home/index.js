@@ -16,6 +16,15 @@ import {
   ErrorContainer,
 } from "./styledComponents";
 
+const profilePicturesList = [
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349047/profile_picture3_nyx0uq.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349047/profile_picture1_djdd4w.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349047/profile_picture4_ywqqvy.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349048/profile_picture2_flpsai.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349048/profile_picture5_akl8wc.jpg",
+  "https://res.cloudinary.com/dybipmq9j/image/upload/v1737349048/profile_picture6_yythda.jpg",
+]
+
 const apiCallLists = {
   initially: "INITIALLY",
   success: "SUCCESS",
@@ -56,6 +65,7 @@ class Home extends Component {
           catch_phrase: each.company.catchPhrase,
           bs: each.company.bs,
         },
+        profile_url: profilePicturesList[Math.floor(Math.random() * 6)],
       }));
       this.setState({ apiStatus: apiCallLists.success, data: updatedData });
     } else {

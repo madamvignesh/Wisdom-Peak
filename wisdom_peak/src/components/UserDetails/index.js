@@ -1,11 +1,17 @@
+import { FaLongArrowAltRight } from "react-icons/fa";
+
 import Context from "../../context/context";
 import {
   Card,
   Container,
+  ProfileImage,
+  UserHeading,
+  HeadingContainer,
   Heading,
   Mail,
   CityHeading,
   StyledLink,
+  DescContainer,
 } from "./styledComponents";
 
 const UserDetails = (props) => {
@@ -15,17 +21,27 @@ const UserDetails = (props) => {
       {(value) => {
         const { isDarkTheme } = value;
         return (
-          <StyledLink to={`/${user.id}`} key={user.id}>
-            <Card isDarkTheme={isDarkTheme} style={{ "--order": user.id }}>
+            <Card isDarkTheme={isDarkTheme}>
+              <HeadingContainer>
+                <ProfileImage src={user.profile_url} alt="image"/>
+                <UserHeading>
+                  <Heading isDarkTheme={isDarkTheme}>{user.name}</Heading>
+                  <Mail isDarkTheme={isDarkTheme}>{user.email}</Mail>
+                </UserHeading>
+              </HeadingContainer>
+              <hr />
               <Container>
-                <Heading isDarkTheme={isDarkTheme}>{user.name}</Heading>
-                <Mail isDarkTheme={isDarkTheme}>Mail: {user.email}</Mail>
+                <CityHeading isDarkTheme={isDarkTheme}>
+                  From: {user.address.city}
+                </CityHeading>
+                <StyledLink to={`/${user.id}`} key={user.id}>
+                  <DescContainer>
+                    <h3>More Deatils</h3>
+                    <FaLongArrowAltRight size={20}/>
+                  </DescContainer>
+                </StyledLink>
               </Container>
-              <CityHeading isDarkTheme={isDarkTheme}>
-                City: {user.address.city}
-              </CityHeading>
             </Card>
-          </StyledLink>
         );
       }}
     </Context.Consumer>
