@@ -35,9 +35,9 @@ const UserDetails = (props) => {
                   From: {user.address.city}
                 </CityHeading>
                 <StyledLink to={`/${user.id}`} key={user.id}>
-                  <DescContainer>
-                    <h3>More Deatils</h3>
-                    <FaLongArrowAltRight size={20}/>
+                  <DescContainer isDarkTheme={isDarkTheme}>
+                    <h4>More Deatils</h4>
+                    <FaLongArrowAltRight size={15}/>
                   </DescContainer>
                 </StyledLink>
               </Container>

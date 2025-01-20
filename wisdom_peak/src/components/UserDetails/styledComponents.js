@@ -8,12 +8,11 @@ export const Card = styled.li`
   padding: 20px;
   border-radius: 12px;
   list-style-type: none;
-  animation-delay: calc(var(--order) * 100ms);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
   &:hover {
     transform: translateY(-5px);
-    border-left: 4px solid #OFOE47; 
+    border-left: 4px solid ${props =>props.isDarkTheme ? "#00E4FF" : "#FC2E2E" }; 
   }
 `
 
@@ -30,8 +29,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
   align-items: center;
 `
 
@@ -91,7 +88,6 @@ export const Mail = styled.p`
 export const CityHeading = styled.h4`
   font-size: 18px;
   color: ${(props) => (props.isDarkTheme ? "#fffdd0" : "#333")};
-  margin-top: 12px;
   transition: color 0.3s;
 
   &:hover {
@@ -106,10 +102,14 @@ export const DescContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 15px;
+  gap: 5px;
+  h4{
+    color: ${props => props.isDarkTheme ? "#9D85FF" : "#3200FF" }
+  }
+
   @media(max-width: 768px){
-    h3{
-      font-size: 14px;
+    h4{
+      font-size: 16px;
     }
   }
 `

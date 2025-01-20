@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Context.Consumer>
       {({ isDarkTheme, onChangeTheme }) => {
-        const bgColor = isDarkTheme ?  "#1a1a40": "#33F0FF"; 
+        const bgColor = isDarkTheme ?  "#131819": "#33F0FF"; 
         const color = isDarkTheme ? "#00ffff" : "#001A9E"; 
 
         return (
