@@ -141,9 +141,15 @@ class Home extends Component {
                 </Container>
               </Container>
               <UesrContainer>
-                {filteredData.map((user) => (
+              {filteredData.length > 0 ? (
+                filteredData.map((user) => (
                   <Userdetails key={user.id} user={user} />
-                ))}
+                ))
+                ) : (
+                  <LoaderContainer>
+                    <h1>No User Found</h1>
+                  </LoaderContainer>
+                )}
               </UesrContainer>
             </MainContainer>
           );
