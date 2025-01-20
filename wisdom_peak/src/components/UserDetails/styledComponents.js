@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import UserDetails from ".";
 
 export const Card = styled.li`
   background-color: ${(props) => (props.isDarkTheme ? "#1E1E1E" : "#FFFFFF")};
@@ -126,4 +125,4 @@ export const StyledLink = styled(Link)`
     transform: scale(1.02);
     text-decoration: underline; 
   }
-`;
+`

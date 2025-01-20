@@ -1,4 +1,4 @@
-import React, { Component, use } from 'react'
+import React, { Component} from 'react'
 import Context from '../../context/context'
 import { FaMapLocationDot } from 'react-icons/fa6'; 
 import { FaMapMarkerAlt, FaBuilding } from "react-icons/fa"
@@ -6,6 +6,8 @@ import { GoGlobe } from "react-icons/go"
 import {
   MainContainer,
   UserDetailContainer,
+  LoaderContainer,
+  ErrorContainer,
   Container,
   DetailItem,
   HeadingDetails,
@@ -16,6 +18,7 @@ import {
   DescHead,
   Desc,
   Button,
+  ButtonContainer,
   ProfileImage,
 } from './styledComponents';
 
@@ -43,6 +46,13 @@ class User extends Component {
 
   componentDidMount() {
     this.getData();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { id } = this.props;
+    if (id !== prevProps.id) {
+      this.getData();
+    }
   }
 
   getData = async () => {
@@ -81,15 +91,15 @@ class User extends Component {
   };
 
   Loader = () => (
-    <div>
+    <LoaderContainer>
       <h1>Loading...</h1>
-    </div>
-  );
+    </LoaderContainer>
+  )
 
   failureView = () => (
-    <div>
-      <h1>Something went wrong</h1>
-    </div>
+    <ErrorContainer>
+      <h1>Something went wrong. Please try again later.</h1>
+    </ErrorContainer>
   )
 
   handleBack = () => {
@@ -139,9 +149,21 @@ class User extends Component {
                   </Desc>
                 </Container>
               </UserDetailContainer>
-              <StyledLink to='/' >
-                <Button>Back</Button>
-              </StyledLink>
+              <ButtonContainer>
+                {user.id > 1 && 
+                  <StyledLink to={`/${user.id - 1}`} >
+                    <Button>Previous</Button>
+                  </StyledLink>
+                }
+                <StyledLink to='/' >
+                  <Button>Back</Button>
+                </StyledLink>
+                {user.id < 10 && 
+                  <StyledLink to={`/${user.id + 1}`} >
+                    <Button>Next</Button>
+                  </StyledLink>
+                }
+              </ButtonContainer>
             </MainContainer>
           );
         }}
